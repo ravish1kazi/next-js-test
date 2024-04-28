@@ -18,7 +18,7 @@ export async function createTask(formData: FormData) {
 
 }
 
-export async function updateTask(id, formData: FormData) {
+export async function updateTask(id : any, formData: FormData) {
 
   const rawFormData = {
       task_name: formData.get('task_name'),
