@@ -31,6 +31,9 @@ export type Todolist = {
   task_name: string;
   task_date: number;
   task_time: string;
+  taskname: string;
+  taskdate: number;
+  tasktime: string;
 };
 
 export type Revenue = {
