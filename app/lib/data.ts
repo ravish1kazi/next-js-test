@@ -73,7 +73,7 @@ export async function update_todolist(data_req : any) {
   }
 }
 
-export async function delete_todolist(id : number) {
+export async function delete_todolist(id : any) {
   try {
     const data = await sql<Todolist>`
     DELETE FROM todolists
