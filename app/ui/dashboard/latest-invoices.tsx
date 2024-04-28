@@ -7,8 +7,8 @@ import {
   LatestInvoiceRaw,
   User,
   Revenue,
-} from './definitions';
-import { formatCurrency } from './utils';
+} from '../../lib/definitions';
+import { formatCurrency } from '../../lib/utils';
 
 export async function fetchRevenue() {
   // Add noStore() here to prevent the response from being cached.
