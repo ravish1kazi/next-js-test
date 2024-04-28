@@ -23,7 +23,7 @@ export async function fetchtodoLists() {
   }
 }
 
-export async function fetchsingletodoLists(id) {
+export async function fetchsingletodoLists(id : any) {
   noStore();
   try {
     const data = await sql<Todolist>`
