@@ -1,20 +1,13 @@
 'use client';
-import Link from 'next/link';
-import {
-    CheckIcon,
-    ClockIcon,
-    CurrencyDollarIcon,
-    UserCircleIcon,
-} from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
 import { updateTask } from '@/app/actions'
 import { fetchsingletodoLists } from '@/app/lib/data';
 import { useSearchParams } from 'next/navigation'
 
-export default async function Page() {
+export default function Page() {
     const searchParams = useSearchParams()
     const updatewithId = updateTask.bind(null, searchParams.get('id'))
-    const singletask = await fetchsingletodoLists(searchParams.get('id'));
+    const singletask = JSON.parse(atob(searchParams.get("data")))
     return (
         <form action={updatewithId}>
             <div className="rounded-md bg-gray-50 p-4 md:p-6">
@@ -29,7 +22,7 @@ export default async function Page() {
                             <input
                                 id="name"
                                 name="task_name"
-                                value={singletask.taskname}
+                                defaultValue={singletask.taskname}
                                 placeholder="Enter task name"
                                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
                             />
@@ -49,7 +42,7 @@ export default async function Page() {
                                     id="date"
                                     name="task_date"
                                     type='date'
-                                    value={new Date(singletask.taskdate).toISOString().split('T')[0]}
+                                    defaultValue={new Date(singletask.taskdate).toISOString().split('T')[0]}
                                     placeholder="Enter task date"
                                     className="peer block rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
                                 />
@@ -67,7 +60,7 @@ export default async function Page() {
                                     id="time"
                                     name="task_time"
                                     type='time'
-                                    value={singletask.tasktime}
+                                    defaultValue={singletask.tasktime}
                                     placeholder="Enter task name"
                                     className="peer block rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
                                 />
