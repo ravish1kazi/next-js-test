@@ -7,7 +7,7 @@ import { useSearchParams } from 'next/navigation'
 export default function Page() {
     const searchParams = useSearchParams()
     const updatewithId = updateTask.bind(null, searchParams.get('id'))
-    const singletask = JSON.parse(atob(searchParams.get("data")))
+    const singletask = JSON.parse(atob(searchParams.get("data") || '') || '{}')
     return (
         <form action={updatewithId}>
             <div className="rounded-md bg-gray-50 p-4 md:p-6">
